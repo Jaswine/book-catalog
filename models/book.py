@@ -12,7 +12,7 @@ class Book(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     description = Column(Text)
-    author_id = Column(Integer, ForeignKey("authors.id"))
+    author_id = Column(Integer, ForeignKey('authors.id'))
     copies_count = Column(Integer, default=0)
 
     author = relationship('Author', back_populates='books', foreign_keys=[author_id])
@@ -29,7 +29,7 @@ class Borrow(Base):
     __tablename__ = 'borrows'
 
     id = Column(Integer, primary_key=True, index=True)
-    book_id = Column(Integer, ForeignKey("books.id"))
+    book_id = Column(Integer, ForeignKey('books.id'))
     reader_name = Column(String)
     issuing_book = Column(Date, default=func.current_date())
     returning_book = Column(Date, default=None, nullable=True)

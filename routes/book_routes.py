@@ -8,7 +8,8 @@ from services.book_services import (create_book, find_all_books,
 
 router = APIRouter()
 
-@router.post('', status_code=201, response_model=BookResponse)
+@router.post('', status_code=201, response_model=BookResponse,
+             name='Добавление книги')
 def create_book_endpoint(book: BookCreate,
                          db: Session = Depends(get_db)) -> BookResponse:
     """
@@ -16,14 +17,16 @@ def create_book_endpoint(book: BookCreate,
     """
     return create_book(db, book)
 
-@router.get('', response_model=list[BookResponse])
+@router.get('', response_model=list[BookResponse],
+            name='Получение списка книг')
 def show_all_books_endpoint(db: Session = Depends(get_db)) -> list[BookResponse]:
     """
         Получение списка книг
     """
     return find_all_books(db)
 
-@router.get('/{book_id}', response_model=BookResponse)
+@router.get('/{book_id}', response_model=BookResponse,
+            name='Получение информации о книге по id')
 def show_book_by_id_endpoint(book_id: int,
                              db: Session = Depends(get_db)) -> BookResponse | HTTPException:
     """
@@ -31,9 +34,10 @@ def show_book_by_id_endpoint(book_id: int,
     """
     if book := find_book_by_id(db, book_id):
         return book
-    raise HTTPException(status_code=404, detail="Book not found")
+    raise HTTPException(status_code=404, detail='Book not found')
 
-@router.put('/{book_id}', response_model=BookResponse)
+@router.put('/{book_id}', response_model=BookResponse,
+            name='Обновление информации о книге')
 def update_book_endpoint(book_id: int,
                          book: BookUpdate,
                          db: Session = Depends(get_db)) -> BookResponse | HTTPException:
@@ -42,9 +46,10 @@ def update_book_endpoint(book_id: int,
     """
     if book := update_book_by_id(db, book_id, book):
         return book
-    raise HTTPException(status_code=404, detail="Book not found")
+    raise HTTPException(status_code=404, detail='Book not found')
 
-@router.delete('/{book_id}', status_code=204)
+@router.delete('/{book_id}', status_code=204,
+               name='Удаление книги')
 def delete_book_endpoint(book_id: int,
                          db: Session = Depends(get_db)):
     """
