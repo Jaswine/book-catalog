@@ -5,9 +5,12 @@ class BookBase(BaseModel):
     title: str
     description: str
     author_id: int
-    copies_count: int = 0
+    copies_count: int
 
 class BookCreate(BookBase):
+    pass
+
+class BookUpdate(BookBase):
     pass
 
 class BookResponse(BookBase):

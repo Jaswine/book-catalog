@@ -10,7 +10,7 @@ def find_all_authors(db: Session) -> list[Type[Author]]:
     """
         Получение списка авторов
         :param db:Session
-        :return:
+        :return: Список авторов
     """
     return db.query(Author).all()
 
@@ -18,7 +18,7 @@ def create_author(db: Session, author: AuthorCreate) -> AuthorCreate:
     """
         Создание нового автора
         :param db: Session
-        :param author: AuthorCreate - Данные
+        :param author: AuthorCreate - Данные автора
         :return: Новый автор
     """
     db_author = Author(first_name=author.first_name,
@@ -68,7 +68,7 @@ def delete_author_by_id(db: Session, author_id: int) -> None:
         Удаление автора
         :param db: Session
         :param author_id: int - Идентификатор автора
-        :return: None или
+        :return: None
     """
     try:
         author = db.query(Author).filter(Author.id == author_id).first()
