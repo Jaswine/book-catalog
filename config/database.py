@@ -3,8 +3,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
 
-
-engine = create_engine(f'postgresql://{getenv("DATABASE_USERNAME", "book_catalog")}:{getenv("DATABASE_PASSWORD", "book_catalog")}@{getenv("DATABASE_HOST", "localhost")}/{getenv("DATABASE_NAME", "book_catalog")}',
+engine = create_engine(getenv('DATABASE_URL',
+                              f'postgresql://{getenv("DATABASE_USERNAME", "book_catalog")}:{getenv("DATABASE_PASSWORD", "book_catalog")}@{getenv("DATABASE_HOST", "localhost")}:{getenv("DATABASE_PORT", "5432")}/{getenv("DATABASE_NAME", "book_catalog")}'),
                        pool_pre_ping=True, echo=True)
 
 db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
