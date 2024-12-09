@@ -1,12 +1,10 @@
-from typing import Type, List
-
 from sqlalchemy.orm import Session
 
 from models.book import Book
 from schemas.book import BookCreate, BookUpdate
 
 
-def find_all_books(db: Session) -> list[Type[Book]]:
+def find_all_books(db: Session) -> list[Book]:
     """
         Получение списка книг
         :param db:Session

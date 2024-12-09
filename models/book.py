@@ -19,7 +19,7 @@ class Book(Base):
     borrowed_books = relationship('Borrow', back_populates='book')
 
     def __str__(self):
-        return f'{self.title} {self.copies_count}'
+        return f'{self.title}: {self.copies_count}'
 
 
 class Borrow(Base):
@@ -31,7 +31,8 @@ class Borrow(Base):
     id = Column(Integer, primary_key=True, index=True)
     book_id = Column(Integer, ForeignKey("books.id"))
     reader_name = Column(String)
-    borrow_date = Column(Date)
+    issuing_book = Column(Date, default=func.current_date())
+    returning_book = Column(Date, default=None, nullable=True)
 
     book = relationship('Book', back_populates='borrowed_books', foreign_keys=[book_id])
 

@@ -23,7 +23,7 @@ def show_all_books_endpoint(db: Session = Depends(get_db)) -> list[BookResponse]
     """
     return find_all_books(db)
 
-@router.get("/{book_id}", response_model=BookResponse)
+@router.get('/{book_id}', response_model=BookResponse)
 def show_book_by_id_endpoint(book_id: int,
                              db: Session = Depends(get_db)) -> BookResponse | HTTPException:
     """
@@ -33,7 +33,7 @@ def show_book_by_id_endpoint(book_id: int,
         return book
     raise HTTPException(status_code=404, detail="Book not found")
 
-@router.put("/{book_id}", response_model=BookResponse)
+@router.put('/{book_id}', response_model=BookResponse)
 def update_book_endpoint(book_id: int,
                          book: BookUpdate,
                          db: Session = Depends(get_db)) -> BookResponse | HTTPException:
@@ -44,7 +44,7 @@ def update_book_endpoint(book_id: int,
         return book
     raise HTTPException(status_code=404, detail="Book not found")
 
-@router.delete("/{book_id}", status_code=204)
+@router.delete('/{book_id}', status_code=204)
 def delete_book_endpoint(book_id: int,
                          db: Session = Depends(get_db)):
     """

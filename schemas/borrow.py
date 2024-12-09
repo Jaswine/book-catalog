@@ -6,13 +6,17 @@ from pydantic import BaseModel
 class BorrowBase(BaseModel):
     book_id: int
     reader_name: str
-    borrow_date: Optional[date]
 
 class BorrowCreate(BorrowBase):
-    pass
+    issuing_book: str
+
+class BorrowUpdate(BaseModel):
+    returning_book: str
 
 class BorrowResponse(BorrowBase):
     id: int
+    issuing_book: Optional[date]
+    returning_book: Optional[date]
 
     class Config:
         orm_mode = True

@@ -1,12 +1,10 @@
-from typing import Type
-
 from sqlalchemy.orm import Session
 
 from models.author import Author
 from schemas.author import AuthorCreate, AuthorUpdate
 
 
-def find_all_authors(db: Session) -> list[Type[Author]]:
+def find_all_authors(db: Session) -> list[Author]:
     """
         Получение списка авторов
         :param db:Session
