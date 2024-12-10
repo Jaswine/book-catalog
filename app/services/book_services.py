@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-from models.book import Book
-from schemas.book import BookCreate, BookUpdate
+from app.models.book import Book
+from app.schemas.book import BookCreate, BookUpdate
 
 
 def find_all_books(db: Session) -> list[Book]:

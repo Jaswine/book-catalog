@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from config.database import get_db
-from schemas.borrow import BorrowCreate, BorrowResponse, BorrowUpdate
-from services.borrow_services import (create_borrow_and_check_book_exists, find_all_borrows,
-                                      find_borrow_by_id, update_borrow_returning_status_by_id)
+from app.config.database import get_db
+from app.schemas.borrow import BorrowCreate, BorrowResponse, BorrowUpdate
+from app.services.borrow_services import (create_borrow_and_check_book_exists, find_all_borrows,
+                                          find_borrow_by_id, update_borrow_returning_status_by_id)
 
 router = APIRouter()
 

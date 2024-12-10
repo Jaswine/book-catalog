@@ -2,8 +2,8 @@ from http.client import HTTPException
 
 from sqlalchemy.orm import Session
 
-from models.book import Borrow, Book
-from schemas.borrow import BorrowCreate, BorrowUpdate
+from app.models.book import Borrow, Book
+from app.schemas.borrow import BorrowCreate, BorrowUpdate
 
 
 def find_all_borrows(db: Session) -> list[Borrow]:

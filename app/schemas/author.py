@@ -1,5 +1,5 @@
 from datetime import date
-from typing import Optional
+from typing import Optional, List
 
 from pydantic import BaseModel
 
@@ -9,8 +9,14 @@ class AuthorBase(BaseModel):
     last_name: str
     birth_date: Optional[date]
 
+class AuthorBookResponse(BaseModel):
+    id: int
+    title: str
+    copies_count: int
+
 class AuthorResponse(AuthorBase):
     id: int
+    books: List[AuthorBookResponse]
 
     class Config:
         orm_mode = True

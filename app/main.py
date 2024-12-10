@@ -1,13 +1,11 @@
 from fastapi import FastAPI
 
 from dotenv import load_dotenv
-from config import database
-from config.settings import Settings
-from config.database import Base
-from routes import author_routes, book_routes, borrow_routes
-from models.author import Author
-from models.book import Book, Borrow
 
+from app.config import database
+from app.config.settings import Settings
+from app.config.database import Base
+from app.routes import author_routes, book_routes, borrow_routes
 
 load_dotenv()
 

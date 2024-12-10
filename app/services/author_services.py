@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-from models.author import Author
-from schemas.author import AuthorCreate, AuthorUpdate
+from app.models.author import Author
+from app.schemas.author import AuthorCreate, AuthorUpdate
 
 
 def find_all_authors(db: Session) -> list[Author]:
