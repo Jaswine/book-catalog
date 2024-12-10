@@ -22,7 +22,7 @@ class AuthorResponse(AuthorBase):
         orm_mode = True
 
 class AuthorCreate(AuthorBase):
-    birth_date: str
+    birth_date: str = None
 
 class AuthorUpdate(AuthorBase):
-    birth_date: str
+    birth_date: str = None
